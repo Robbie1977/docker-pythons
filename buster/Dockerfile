@@ -1,4 +1,4 @@
-FROM debian:tester
+FROM debian:buster-20171210
 LABEL maintainer "Louis Paternault <spalax+docker@gresille.org>"
 
 ARG DEBIAN_FRONTEND=noninteractive
