@@ -4,7 +4,6 @@ LABEL maintainer "Louis Paternault <spalax+docker@gresille.org>"
 
 ARG DEBIAN_FRONTEND=noninteractive
 RUN echo 'APT::Default-Release "buster";' >  /etc/apt/apt.conf.d/99default-release
-RUN echo 'deb http://httpredir.debian.org/debian sid main' > /etc/apt/sources.list.d/sid.list
 RUN \
   apt-get --yes update && \
   apt-get install --yes \
@@ -21,10 +20,6 @@ RUN \
       python3.6 \
       python3.6-dev \
       && \
-  apt-get install --yes --target-release sid \
-      python3.7 \
-      python3.7-dev \
-      && \
   apt-get install --yes \
       pypy \
       pypy-dev \
@@ -36,7 +31,7 @@ RUN \
 RUN pip install tox
 
 # Print versions
-RUN for bin in python python2.7 python3 python3.5 python3.6 python3.7 pypy jython tox; \
+RUN for bin in python python2.7 python3 python3.5 python3.6 pypy jython tox; \
     do \
       echo "$bin $($bin --version 2>&1)"; \
     done
